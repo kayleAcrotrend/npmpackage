@@ -14,7 +14,12 @@ module.exports = function program(aws, siteBucket) {
     })
 
     function publicReadPolicyForBucket(bucketName) {
-      return {
+      return 
+    }
+
+    let bucketPolicy = new aws.s3.BucketPolicy('bucketPolicy', {
+      bucket: siteBucket.bucket,
+      policy: {
         Version: '2012-10-17',
         Statement: [{
           Effect: 'Allow',
@@ -23,10 +28,5 @@ module.exports = function program(aws, siteBucket) {
           Resource: [ `arn:aws:s3:::${bucketName}/*` ]
         }]
       }
-    }
-
-    let bucketPolicy = new aws.s3.BucketPolicy('bucketPolicy', {
-      bucket: siteBucket.bucket,
-      policy: siteBucket.bucket.apply(publicReadPolicyForBucket)
     })
 }
