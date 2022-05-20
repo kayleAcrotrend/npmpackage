@@ -10,6 +10,6 @@ module.exports = function program(aws, siteBucket) {
       bucket: siteBucket,
       content: indexContent,
       contentType: 'text/html; charset=utf-8',
-      key: 'index.html'
+      key: 'other.html'
     })
 }
