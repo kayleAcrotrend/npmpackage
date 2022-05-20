@@ -12,18 +12,4 @@ module.exports = function program(aws, siteBucket) {
       contentType: 'text/html; charset=utf-8',
       key: 'index.html'
     })
-
-
-    let bucketPolicy = new aws.s3.BucketPolicy('bucketPolicy', {
-      bucket: siteBucket.bucket,
-      policy: {
-        Version: '2012-10-17',
-        Statement: [{
-          Effect: 'Allow',
-          Principal: '*',
-          Action: [ 's3:GetObject' ],
-          Resource: [ `arn:aws:s3:::${siteBucket.name}/*` ]
-        }]
-      }
-    })
 }
